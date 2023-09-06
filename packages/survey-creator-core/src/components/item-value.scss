@@ -1,0 +1,228 @@
+@import "../variables.scss";
+
+.svc-item-value-wrapper {
+  position: relative;
+  display: flex;
+  gap: calcSize(1);
+  align-items: center;
+  margin-left: calcSize(-5);
+}
+
+.svc-question__dropdown-choice,
+.sd-selectbase {
+  .svc-item-value-wrapper {
+    align-items: flex-start;
+    min-width: calcSize(28);
+  }
+  .svc-item-value__item {
+    padding-right: calcSize(1);
+  }
+}
+
+.svc-question__content {
+  .sd-selectbase__column:not(.sd-imagepicker__column):not(:first-of-type) {
+    margin-left: calcSize(5);
+  }
+
+  .sd-selectbase__column:not(:last-child) {
+    padding-right: 0;
+  }
+}
+
+.svc-item-value--dragging {
+  background: $background;
+  box-shadow: $shadow-large;
+  border-radius: calcSize(12.5);
+  padding-right: calcSize(3);
+  padding-left: calcSize(0.5);
+  @include disableUserSelect;
+}
+
+.svc-item-value-controls {
+  display: flex;
+  margin: calcSize(1) 0;
+  height: calcSize(4);
+  box-sizing: border-box;
+  flex-shrink: 0;
+  min-width: 72px;
+  justify-content: flex-end;
+}
+
+.svc-item-value-controls__button {
+  border-radius: 50%;
+  padding: calcSize(1);
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  height: calcSize(2);
+  box-sizing: content-box;
+
+  .sv-svg-icon {
+    display: block;
+  }
+}
+
+.svc-item-value-controls__button>span {
+  display: block;
+}
+
+.svc-item-value-controls__drag-icon {
+  display: block;
+}
+
+.svc-item-value-wrapper:hover:not(.svc-item-value--ghost),
+.svc-item-value-controls__drag:hover:not(.svc-item-value--ghost) {
+  .svc-item-value-controls__drag-icon {
+    visibility: visible;
+  }
+}
+
+.svc-item-value-controls__drag {
+  padding: calcSize(0.5) calcSize(1);
+  cursor: move;
+  opacity: 0.25;
+
+  .svc-item-value-controls__drag-icon {
+    visibility: hidden;
+  }
+
+  use {
+    fill: $foreground;
+  }
+}
+.svc-item-value-controls__button--disabled {
+  fill: $foreground-light;
+  opacity: 0.25;
+  cursor: default;
+}
+
+.svc-item-value-controls__remove:not(.svc-item-value-controls__button--disabled) {
+  use {
+    fill: $red;
+  }
+}
+
+.svc-item-value-controls__add:not(.svc-item-value-controls__button--disabled) {
+  use {
+    fill: $primary;
+  }
+}
+
+.svc-item-value-controls__add:not(.svc-item-value-controls__button--disabled) {
+
+  &:hover,
+  &:focus {
+    background-color: $primary-light;
+  }
+}
+
+.svc-item-value-controls__remove:not(.svc-item-value-controls__button--disabled) {
+
+  &:hover,
+  &:focus {
+    background-color: $red-light;
+  }
+}
+
+.sv-string-editor {
+  cursor: text;
+}
+
+.svc-item-value--new {
+  .svc-item-value__item {
+
+    .sd-item__control-label,
+    .sv-ranking-item__text {
+      color: $foreground-light;
+    }
+
+    .sd-item__decorator {
+      opacity: 0.35;
+    }
+  }
+
+  .sv-ranking-item__index {
+    background: $background-dim;
+
+    &.sv-ranking-item__index--empty:empty {
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCjxwYXRoIGQ9Ik0xMyA3SDNWOUgxM1Y3WiIgZmlsbD0iYmxhY2siIGZpbGwtb3BhY2l0eT0iMC40NSIvPg0KPC9zdmc+)
+    }
+  }
+}
+
+.sv-ranking {
+  .svc-item-value-wrapper {
+    align-items: center;
+    min-width: calcSize(27);
+  }
+  .svc-item-value__item {
+    padding-right: 0;
+  }
+}
+
+.svc-item-value__item {
+  .sv-ranking-item__content {
+    padding-left: 0;
+  }
+
+  .sv-ranking-item__icon-container {
+    display: none;
+  }
+
+  .sv-ranking-item__text {
+    overflow: visible;
+  }
+}
+
+.svc-item-value--ghost {
+  .svc-item-value__ghost {
+    display: block;
+  }
+
+  .svc-item-value-controls {
+    visibility: hidden;
+  }
+}
+
+.svc-item-value--movedown {
+  transform: translate(0, 0);
+  animation: svdragdropmovedown 0.1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes svdragdropmovedown {
+  0% {
+    transform: translate(0, -50px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.svc-item-value--moveup {
+  transform: translate(0, 0);
+  animation: svdragdropmoveup 0.1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes svdragdropmoveup {
+  0% {
+    transform: translate(0, 50px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.svc-item-value__ghost {
+  display: none;
+  background: $background-dim;
+  border-radius: calcSize(12.5);
+  width: calcSize(25);
+  height: 40px;
+  z-index: 11;
+  position: absolute;
+  left: 35px;
+}

@@ -1,0 +1,153 @@
+@import "../variables.scss";
+@import "./notifier.scss";
+
+survey-creator,
+.svc-creator {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  -webkit-font-smoothing: antialiased;
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: $border transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 32px;
+    background-color: $border;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    border: 2px solid rgba(0, 0, 0, 0);
+    background-color: $foreground-light;
+  }
+}
+
+.svc-creator__area {
+  position: relative;
+
+  @include disableUserSelect;
+}
+
+.svc-creator__area.svc-creator__area--with-banner {
+  height: calc(100% - calc(4 * #{$base-unit}));
+}
+
+.svc-creator__content-wrapper {
+  width: 100%;
+  height: calc(100% - calc(8 * #{$base-unit})); // without top toolbar
+}
+
+.svc-creator__content-wrapper--footer-toolbar {
+  height: calc(100% - calc(6 * #{$base-unit})); // without footer toolbar
+}
+
+.svc-creator__content-holder {
+  width: 100%;
+  height: 100%;
+}
+
+.svc-creator-tab {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  min-height: $tab-min-height;
+}
+
+.svc-creator__toolbox--right.svc-creator-tab {
+  flex-direction: row-reverse;
+}
+
+.svc-creator-tab__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.svc-plugin-tab__content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.svc-plugin-tab__content-actions {
+  sv-action-bar {
+    padding: 0;
+    height: calc(6 * #{$base-unit});
+    background: $background;
+    border-top: 1px solid $border;
+  }
+}
+
+.svc-creator__banner {
+  position: absolute;
+  bottom: calcSize(-4);
+  width: 100%;
+  height: calcSize(4);
+  line-height: calcSize(4);
+  background-color: $secondary;
+  text-align: center;
+  overflow: hidden;
+}
+
+.svc-item__banner {
+  position: absolute;
+  top: 0;
+  max-width: 0;
+  overflow: hidden;
+  height: 100%;
+  background-color: $background;
+  /* Shadow / Medium */
+  border-radius: calcSize(12.5);
+  box-shadow: $shadow-medium;
+  transition: max-width 0.1s ease-in-out, padding 0.2s ease-in-out;
+}
+
+.svc-creator__non-commercial-text {
+  color: $primary-foreground;
+  font-family: $font-family;
+  font-weight: bold;
+  font-size: calcSize(2);
+  text-transform: uppercase;
+  vertical-align: middle;
+
+  a {
+    color: $primary-foreground;
+    text-decoration: none;
+  }
+}
+
+.sv-drag-drop-ghost {
+  top: calcSize(0.75);
+  width: 100%;
+  height: calcSize(0.5);
+  background: $secondary;
+  position: absolute;
+}
+
+.sv-drag-drop-ghost--vertical {
+  height: 10000px;
+  width: 4px;
+}
+
+.sv-drag-drop-ghost--item-value-bottom {
+  top: initial;
+  bottom: calcSize(-0.5);
+}

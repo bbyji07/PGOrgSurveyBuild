@@ -1,0 +1,113 @@
+@import "../variables.scss";
+
+svc-page {
+  display: block;
+}
+
+.svc-page {
+  margin-top: calcSize(2);
+
+  .sd-page__title {
+    margin: calcSize(2.5) 0 0 0;
+  }
+}
+
+.svc-page__content {
+  position: relative;
+  border-radius: calcSize(1);
+  padding: calcSize(1) calcSize(0) calcSize(3);
+  box-sizing: border-box;
+  width: 100%;
+  outline: none;
+
+  .sd-page {
+    margin: 0;
+    padding: calcSize(1) calcSize(3) calcSize(2);
+  }
+}
+
+.svc-page__content-actions {
+  position: absolute;
+  display: none;
+  top: calcSize(1);
+  inset-inline-end: 0; // right
+  padding: 0 calcSize(1.5);
+  z-index: 1;
+}
+
+.svc-page__content:not(.svc-page__content--new):focus,
+.svc-hovered.svc-page__content:not(.svc-page__content--new) {
+  background: $secondary-backcolor-semi-light;
+}
+
+.svc-creator .svc-page .svc-page__content--selected,
+.svc-creator .svc-page .svc-page__content--selected:focus,
+.svc-hovered {
+  &.svc-page__content--selected {
+    box-shadow: 0 0 0 2px $secondary;
+    background: $secondary-backcolor-semi-light;
+
+    .svc-page__content-actions {
+      display: block;
+    }
+  }
+}
+
+.svc-page__footer {
+  overflow: visible;
+  margin-left: calcSize(3);
+  margin-right: calcSize(3);
+
+  .sv-action {
+    flex: 1 1 0;
+  }
+
+  .svc-btn {
+    flex-grow: 1;
+    border: none;
+  }
+
+  gap: calcSize(2);
+}
+
+.svc-page__add-new-question {
+  .svc-text {
+    margin-left: calcSize(6);
+  }
+}
+
+.svc-page__question-type-selector {
+  appearance: none;
+  display: flex;
+  height: calcSize(5);
+  padding: calcSize(1);
+  box-sizing: border-box;
+  border: none;
+  border-radius: 2px;
+  background-color: transparent;
+  cursor: pointer;
+  margin-inline-end: calcSize(1); // margin-right
+  outline: none;
+
+  use {
+    fill: $foreground-light;
+  }
+
+  &:hover {
+    background-color: $background-dim;
+  }
+
+  &:focus {
+    background-color: $primary-light;
+  }
+}
+
+.svc-page--drag-over-empty:after {
+  content: " ";
+  position: absolute;
+  background: $secondary;
+  left: calcSize(3);
+  bottom: calcSize(11.5);
+  width: calc(100% - 48px);
+  height: 2px;
+}

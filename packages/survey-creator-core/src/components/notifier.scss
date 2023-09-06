@@ -1,0 +1,41 @@
+@import "../variables.scss";
+
+.svc-notifier.svc-notifier--shown {
+  visibility: visible;
+  opacity: 0.75;
+}
+.svc-notifier {
+  position: absolute;
+  bottom: calcSize(1);
+  left: calcSize(1);
+  background: $background;
+  opacity: 0;
+  padding: calcSize(1) calcSize(2);
+  box-shadow: $shadow-medium;
+  border-radius: calcSize(0.5);
+  color: $foreground;
+  min-width: calcSize(30);
+  text-align: center;
+  z-index: 1600; //todo: should overlap popup
+
+  visibility: hidden;
+
+  @include smallBold;
+}
+
+.svc-notifier.svc-notifier--error {
+  background-color: $red;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.svc-creator--mobile {
+  .svc-notifier {
+    left: 0;
+    bottom: calcSize(6);
+    width: 100%;
+    box-sizing: border-box;
+    opacity: 1;
+    z-index: 1000;
+  }
+}
