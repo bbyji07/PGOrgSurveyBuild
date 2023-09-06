@@ -1,0 +1,161 @@
+@import "../../variables.scss";
+
+.svc-tab-translation {
+  width: 100%;
+  height: 100%;
+  background-color: $background-dim;
+}
+
+.st-properties {
+  background-color: $background-dim;
+  flex-grow: 1;
+  padding-right: calcSize(4);
+  padding-left: calcSize(4);
+  padding-top: calcSize(2);
+
+  .spg-table {
+    .spg-table__cell:first-of-type {
+      width: calcSize(5);
+    }
+
+    .spg-table__question-wrapper {
+      padding: calcSize(1.5) calcSize(1);
+
+      .spg-checkbox {
+        margin: 0;
+      }
+
+      .spg-selectbase__label {
+        gap: 0;
+      }
+    }
+
+    .spg-checkbox--disabled {
+
+      .spg-checkbox__rectangle,
+      .spg-checkbox__rectangle:hover {
+        background: $background-dim;
+      }
+    }
+  }
+}
+
+.st-no-strings {
+  @include centerText;
+}
+
+.st-content {
+  display: flex;
+  height: 100%;
+}
+
+.st-strings {
+  height: calc(100% - calc(6 * #{$base-unit}));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.st-strings-wrapper {
+  flex-grow: 1;
+}
+
+.st-property-panel {
+  flex-shrink: 0;
+  flex-grow: 0;
+  width: 450px;
+  border-left: 1px solid $border;
+}
+
+.st-property-panel .spg-panel__content .spg-row {
+  margin-top: 0;
+}
+
+.st-property-panel .spg-panel__content .spg-row:first-child {
+  margin-top: calcSize(2);
+}
+
+.st-strings-header {
+  .st-table__cell {
+    background-color: $background-dim;
+    height: auto;
+  }
+}
+
+.st-root-modern {
+  width: 100%;
+}
+
+.st-title.st-panel__title,
+.st-table__cell.st-table__cell--header {
+  @include smallBold;
+  color: $foreground-light;
+  text-align: left;
+}
+
+.st-title.st-panel__title {
+  height: calcSize(4);
+  line-height: calcSize(4);
+  padding-left: calcSize(3);
+  margin: 0;
+
+  background-color: $background-dim-light;
+  border-bottom: 1px solid $border-light;
+}
+
+.st-table {
+  tr {
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.st-table__cell {
+  display: block;
+  flex: 1 1;
+  box-sizing: border-box;
+  background-color: $background;
+  border-bottom: 1px solid $border-light;
+  padding: calcSize(1) 0;
+}
+
+td.st-table__cell:first-of-type {
+  @include defaultBold;
+  color: $foreground;
+  max-width: 300px;
+  padding-right: calcSize(3);
+
+  span {
+    display: inline-block;
+    padding-left: calcSize(3);
+  }
+}
+
+.st-panel-indent .st-table__cell:first-of-type {
+  span {
+    padding-left: calcSize(6);
+  }
+}
+
+.st-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.st-comment {
+  @include defaultFont;
+  display: block;
+  width: calc(100% - 3 * #{$base-unit});
+  border: unset;
+  outline: none;
+  background-color: $background;
+  color: $foreground;
+  resize: none;
+  padding: 0;
+}
+
+.sd-translation-line-skeleton {
+  min-height: calcSize(5);
+  background-color: $background-dim;
+}
