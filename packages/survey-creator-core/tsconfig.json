@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2015",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "survey-creator-core": [
+        "./src/editorLocalization.ts"
+      ],
+    }
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
