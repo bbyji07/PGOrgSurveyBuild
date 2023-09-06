@@ -1,0 +1,119 @@
+@import "../../variables.scss";
+
+svc-toolbox {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+.svc-toolbox {
+  height: 100%;
+  padding: calcSize(2);
+  box-sizing: border-box;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+.svc-toolbox--compact {
+  width: calcSize(10.5);
+  overflow: visible;
+  direction: ltr;
+}
+
+.svc-toolbox__container {
+  direction: ltr;
+}
+
+.svc-toolbox__category {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.svc-toolbox__tool:not(.sv-dots) {
+  display: flex;
+  width: auto;
+}
+
+.svc-toolbox__tool .sv-dots__item {
+  width: calcSize(6);
+  margin-top: calcSize(0.5);
+}
+
+.svc-toolbox__category-separator {
+  height: 1px;
+  width: calcSize(6);
+  background-color: $border;
+  margin: calcSize(1) 0 calcSize(1.5);
+}
+
+.svc-toolbox__category-header {
+  height: calcSize(5);
+  padding: calcSize(1.5);
+  background: $background-dim;
+  // box-shadow: 0px 1px 0px $border;
+  border-bottom: 1px solid $border;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: calcSize(20);
+  position: relative;
+}
+
+.svc-toolbox__category-header--collapsed {
+  cursor: pointer;
+}
+
+.svc-toolbox__category-title {
+  font-family: $font-family;
+  font-size: calcSize(1.5);
+  font-weight: bold;
+  line-height: calcSize(2);
+  color: $foreground;
+  vertical-align: middle;
+  display: block;
+}
+
+.svc-toolbox__category-header__controls {
+  position: absolute;
+  right: calcSize(1);
+  top: calcSize(1);
+  display: none;
+
+}
+
+.svc-toolbox__category-header__button {
+  fill: $foreground-light;
+}
+
+.svc-toolbox__category-header:hover {
+  .svc-toolbox__category-header__controls {
+    display: block;
+  }
+}
+
+.svc-toolbox__tool {
+  cursor: default;
+
+  .sv-action__content {
+    display: flex;
+    padding-top: calcSize(0.5);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.svc-creator__toolbox--right {
+  .svc-toolbox__tool {
+    .sv-action__content {
+      align-items: flex-end;
+    }
+  }
+}
+
+
+.svc-toolbox__category--collapsed{
+  .svc-toolbox__tool {
+    height: 0;
+    visibility: hidden;
+  }
+}
